@@ -1,9 +1,9 @@
 export interface User {
-    id?: number;
-    name?: string | undefined;
+    id: number;   // required (you always use it)
+    name?: string;
     position?: string;
     department?: string;
-    details?: string;
-    role?: string | undefined;
-    
-}
+    details?: {
+      role: [number, string];
+    };
+  }
