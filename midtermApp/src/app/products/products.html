@@ -1,0 +1,49 @@
+<h2 style="text-align:center; margin-bottom:20px;">Product List</h2>
+
+<table class="products-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>
+        <span class="status" [ngClass]="{
+          'available': product.status === 'Available',
+          'limited': product.status === 'Limited',
+          'out-of-stock': product.status === 'Out of Stock'
+        }">
+          {{product.status}}
+        </span>
+      </td>
+      <td>
+        <button class="view-btn" (click)="viewProductDetails(product)">View</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Product Details</h3>
+
+    <div class="product-details">
+      <p><b>ID:</b> {{selectedProduct.id}}</p>
+      <p><b>Name:</b> {{selectedProduct.name}}</p>
+      <p><b>Category:</b> {{selectedProduct.category}}</p>
+      <p><b>Price:</b> ₱{{selectedProduct.price}}</p>
+      <p><b>Stock:</b> {{selectedProduct.stock}}</p>
+      <p><b>Status:</b> {{selectedProduct.status}}</p>
+      <p><b>Description:</b> {{selectedProduct.description}}</p>
+    </div>
+
+    <button class="close-btn" (click)="closeModal()">Close</button>
+  </div>
+</div>

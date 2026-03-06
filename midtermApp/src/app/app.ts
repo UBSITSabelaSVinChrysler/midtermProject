@@ -3,10 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { Navi } from './components/navi/navi';
 
 
-
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,Navi],
+  imports: [RouterOutlet, Navi,],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
