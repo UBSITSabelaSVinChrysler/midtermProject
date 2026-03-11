@@ -7,6 +7,10 @@ import { Style } from './databinding/style/style';
 import { Interpolation } from './databinding/interpolation/interpolation';
 import { EventBinding } from './databinding/event/event';
 import { ProductsComponent } from './products/products';
+import { ProductList } from './product-list/product-list';
+import { ProductDetails } from './product-details/product-details';
+import { Component } from '@angular/core';
+
 
 
 export const routes: Routes = [
@@ -18,5 +22,23 @@ export const routes: Routes = [
     { path: 'attribute', component: Attribute },
     { path: 'style', component: Style },
     { path: 'products', component: ProductsComponent },
+    { path: 'product-list', component: ProductList},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
+{
+    path: 'employees'
+    Component; ProductList;
+    children:[
+      {
+        path: ':id',
+        children: [
+          {
+            path: 'details',Component: ProductList,
+          }
+        ]
+      }
+    ]
+  }
+
+
+

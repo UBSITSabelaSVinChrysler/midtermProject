@@ -1,15 +1,10 @@
-import { Component } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Product } from '../models/product.interface';
-import { CommonModule } from '@angular/common';
 
-@Component({
-  selector: 'app-products',
-  imports: [CommonModule], 
-  templateUrl: './products.html',
-  styleUrls: ['./products.css']
+@Injectable({
+  providedIn: 'root',
 })
-
-export class ProductsComponent {
+export class ProductService {
 
   products: Product[] = [
     {id:1, name:'NVIDIA GeForce RTX 6090', category:'GPU', price:120000, stock:2, status:'Limited', description:'Next-gen flagship graphics card for extreme gaming and AI workloads'},
@@ -24,16 +19,26 @@ export class ProductsComponent {
     {id:10, name:'Logitech G Pro X Superlight', category:'Peripherals', price:8500, stock:12, status:'Available', description:'Ultra-lightweight wireless gaming mouse'}
   ];
 
-  selectedProduct!: Product;
-  showModal = false;
-
-  viewProductDetails(product: Product){
-    this.selectedProduct = product;
-    this.showModal = true;
+  getProducts(): Product[] {
+    return this.products;
   }
 
-  closeModal(){
-    this.showModal = false;
+  getProductById(id: number): Product | undefined {
+    return this.products.find(p => p.id === id);
   }
 
+  isAuthenticated(): boolean {
+    return !!sessionStorage.getItem('auth_token');
+  }
+
+  login(): void { sessionStorage.setItem('auth_token', 'demo-token');}
+  logout(): void { sessionStorage.removeItem('auth_token;');}
+
+
+  updateProduct(updated: Product): void {
+    const idx = this.products.findIndex(p => p.id === updated.id);
+    if (idx !== -1) {
+      this.products[idx] = { ...updated };
+    }
+  }
 }

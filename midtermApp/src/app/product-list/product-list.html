@@ -1,0 +1,33 @@
+<h2 style="text-align:center; margin-bottom:20px;">Product List</h2>
+
+<table class="products-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>
+        <span class="status" [ngClass]="{
+          'available': product.status === 'Available',
+          'limited': product.status === 'Limited',
+          'out-of-stock': product.status === 'Out of Stock'
+        }">
+          {{ product.status }}
+        </span>
+      </td>
+      <td>
+        <button class="btn view" (click)="getProduct(product)">
+          View
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
