@@ -10,6 +10,8 @@ import { ProductsComponent } from './products/products';
 import { ProductList } from './product-list/product-list';
 import { ProductDetails } from './product-details/product-details';
 import { Component } from '@angular/core';
+import { SuppliersListComponent } from './suppliers-list/suppliers-list';
+import { SupplierDetailsComponent } from './supplier-details/supplier-details';
 
 
 
@@ -23,6 +25,10 @@ export const routes: Routes = [
     { path: 'style', component: Style },
     { path: 'products', component: ProductsComponent },
     { path: 'product-list', component: ProductList},
+    { path: 'suppliers', component: SuppliersListComponent },
+  { path: 'suppliers/:id', component: SupplierDetailsComponent},
+
+    { path: '', redirectTo: '/suppliers', pathMatch: 'full' },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 {

@@ -1,0 +1,27 @@
+<div class="table-container">
+    <div class="header-section">
+      <h2>Supplier Management System</h2>
+      <p>Manage and edit your supplier network</p>
+    </div>
+  
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Supplier Name</th>
+          <th>Contact Person</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of suppliers">
+          <td class="id-col">{{ s.id }}</td>
+          <td class="name-col">{{ s.supplierName }}</td>
+          <td>{{ s.contactPerson }}</td>
+          <td class="text-center">
+            <button class="btn-view" (click)="viewDetails(s.id)">View Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
